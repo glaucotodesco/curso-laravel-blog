@@ -7,7 +7,8 @@ use Illuminate\Http\Request;
 class PagesController extends Controller
 {
     public function index(){
-        return view('index');
+        $title = "Sistema de Blogs 1.0";
+        return view('index')->with('title', $title);
     }
      
     public function about(){
