@@ -14,20 +14,10 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/hello', 'HelloController@index');
-
-
 Route::get('/'        , 'PagesController@index');
 Route::get('/about'   , 'PagesController@about');
 Route::get('/services', 'PagesController@services');
 Route::get('/projects', 'PagesController@projects');
-
-
-
 Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
+Route::resource('posts','PostsController');
