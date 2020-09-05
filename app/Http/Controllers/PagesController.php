@@ -12,11 +12,18 @@ class PagesController extends Controller
     }
      
     public function about(){
-        return view('pages.about');
+        $author  = "Glauco Todesco";
+        $company = "Abútua Tecnologia";
+        return view('pages.about')->with('author', $author)->with('company',$company);
     }
 
     public function services(){
-        return view('pages.services');
+        $data = array(
+                'services'   => ['Desenvolvimento de Sistemas','Cursos e Treinamentos','Consultorias']
+        );
+        
+        return view('pages.services')->with($data);
+
     }
 
     public function projects(){
