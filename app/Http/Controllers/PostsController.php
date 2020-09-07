@@ -29,7 +29,7 @@ class PostsController extends Controller
      */
     public function create()
     {
-        //
+        return view('posts.create');
     }
 
     /**
@@ -40,7 +40,12 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $post = new Post();
+        $post->title = $request->input('title');
+        $post->body  = $request->input('body');
+        $post->save();
+
+        return redirect('/posts');
     }
 
     /**
