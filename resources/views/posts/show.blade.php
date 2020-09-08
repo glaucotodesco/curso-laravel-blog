@@ -6,11 +6,12 @@
 <hr> 
 <small>Data: {{$post->created_at}}</small>
 <hr> 
-<div>
-    {!! Form::open(['action' => ['PostsController@destroy', $post->id], 'method' => 'DELETE', 'class' => 'pull-right' ]) !!}
-    <a href="/posts/{{$post->id}}/edit" class="btn btn-primary">Editar Mensagem</a>
-    {{Form::submit('Remover',['class' => 'btn btn-danger'])}}
-    {!! Form::close() !!}
-</div>
+
+@if(!Auth::guest() && Auth::user()->id == $post->user_id)
+        {!! Form::open(['action' => ['PostsController@destroy', $post->id], 'method' => 'DELETE', 'class' => 'pull-right' ]) !!}
+        <a href="/posts/{{$post->id}}/edit" class="btn btn-primary">Editar Mensagem</a>
+        {{Form::submit('Remover',['class' => 'btn btn-danger'])}}
+        {!! Form::close() !!}
+@endif
 
 @endsection
